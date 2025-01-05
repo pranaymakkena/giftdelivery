@@ -23,7 +23,7 @@ const Checkout = () => {
       <h2>Checkout</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Name on Card:
+          Name on Card
           <input
             type="text"
             name="name"
@@ -33,7 +33,7 @@ const Checkout = () => {
           />
         </label>
         <label>
-          Card Number:
+          Card Number
           <input
             type="text"
             name="cardNumber"
@@ -43,7 +43,7 @@ const Checkout = () => {
           />
         </label>
         <label>
-          Expiry Date:
+          Expiry Date
           <input
             type="text"
             name="expiryDate"
@@ -53,7 +53,7 @@ const Checkout = () => {
           />
         </label>
         <label>
-          CVV:
+          CVV
           <input
             type="text"
             name="cvv"
