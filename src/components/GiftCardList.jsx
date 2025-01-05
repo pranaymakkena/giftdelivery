@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const GiftCardList = () => {
   const giftCards = [
     { id: 1, name: 'Amazon', imgSrc: '/images/amazon.png' },
-    { id: 2, name: 'Flipkart', imgSrc: 'flipkart.jpg' },
-    { id: 3, name: 'Pizza Hut', imgSrc: 'pizzahut.jpg' },
-    { id: 4, name: 'Domino\'s', imgSrc: 'dominos.jpg' },
+    { id: 2, name: 'Flipkart', imgSrc: '/images/flipkart.png' },
+    { id: 3, name: 'Pizza Hut', imgSrc: '/images/pizzahut.png' },
+    { id: 4, name: 'Domino\'s', imgSrc: '/images/dominos.png' },
   ];
 
   return (
