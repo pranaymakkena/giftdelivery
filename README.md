@@ -1,11 +1,12 @@
 # Gift Delivery App
-A React-based web application for managing and tracking gift deliveries. This app allows users to choose gifts, specify delivery addresses, and track the status of their gift delivery. It provides a simple and intuitive user interface for managing orders, and can be easily customized to fit any gift delivery business.
+An e-gift card delivery platform built using React.js. Users can browse through a variety of gift cards from popular stores like Amazon, Flipkart, Pizza Hut, and Domino's, select denominations, and complete the payment process securely.
 
 ## Features
-- Select and view gifts available for delivery.
-- Add and edit delivery details (e.g., recipient's name, address, message).
-- Track the delivery status in real-time (e.g., Pending, In-Transit, Delivered).
-- Manage the delivery list and filter orders based on delivery status.
+
+- Browse a variety of gift cards from popular brands.
+- Select the denomination of the gift card (₹100, ₹500, ₹1000, ₹2000).
+- Secure payment through card details for completing the purchase.
+- Simple and intuitive user interface.
 
 ## Getting Started
 
