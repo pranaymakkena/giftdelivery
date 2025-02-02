@@ -19,8 +19,7 @@ a {
   background: white;
   color: #333;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex-wrap: wrap;
-  overflow: hidden;
+  flex-wrap: nowrap;
 }
 
 .header.dark {
@@ -470,4 +469,20 @@ footer p {
 
 .view-cart-btn:hover {
   background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: nowrap;
+  }
+
+  .icon-container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .gift-card-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
