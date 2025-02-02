@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart, FaHeart, FaUser, FaSun, FaMoon, FaBars, FaSearch } from 'react-icons/fa';
+import { FaShoppingCart, FaHeart, FaSun, FaMoon } from 'react-icons/fa';
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [wishlistCount, setWishlistCount] = useState(0);
-  const [menuActive, setMenuActive] = useState(false); // To toggle the mobile menu
-  const [searchActive, setSearchActive] = useState(false); // To toggle the search bar
 
   useEffect(() => {
     const storedCartCount = localStorage.getItem('cartCount') || 0;
@@ -25,25 +23,11 @@ const Header = () => {
     setMenuActive(!menuActive);
   };
 
-  const toggleSearch = () => {
-    setSearchActive(!searchActive);
-  };
-
   return (
     <header className={`header ${darkMode ? 'dark' : ''}`}>
       <Link to="/" className="logo">Gift Card Delivery</Link>
 
-      {/* Search Bar */}
-      <div className={`search-bar ${searchActive ? 'active' : ''}`}>
-        <input type="text" placeholder="Search gift cards..." />
-      </div>
-
-      {/* Search Icon */}
       <div className="icon-container">
-        <div className="icon" onClick={toggleSearch}>
-          <FaSearch className="icon-search" />
-        </div>
-
         <Link to="/wishlist" className="icon">
           <FaHeart className="icon-heart" />
           {wishlistCount > 0 && <span className="badge">{wishlistCount}</span>}
