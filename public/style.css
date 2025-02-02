@@ -1,4 +1,3 @@
-/* Global styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
@@ -10,162 +9,303 @@ a {
   text-decoration: none;
 }
 
-/* Header */
-header {
-  background-color: #f8f9fa;
-  padding: 20px;
-  text-align: center;
-}
-
-h1 {
-  margin: 0;
-  font-size: 2rem;
-  color: #333;
-}
-
-/* Gift card list styles */
-.gift-card-list {
+.header {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header.dark {
+  background: #222;
+  color: white;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon .label {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+.dark-mode-toggle {
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  margin-top: 5px;
+}
+
+.dark-mode {
+  background: #222;
+  color: white;
+}
+
+.dark-mode input {
+  background: #333;
+  color: white;
+  border: 1px solid white;
+}
+
+.dark-mode .description, .dark-mode .wishlist-btn {
+  color: white;
+}
+
+.dark-mode .gift-card-detail,
+.dark-mode .checkout {
+  background-color: #222;
+  color: white;
+}
+
+.dark-mode .gift-card-detail .title-container,
+.dark-mode .checkout label {
+  color: #ddd;
+}
+
+.dark-mode .gift-card-detail .description,
+.dark-mode .checkout .description {
+  color: #bbb;
+}
+
+.dark-mode .gift-card-detail .discount-tag,
+.dark-mode .checkout .btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.dark-mode .gift-card-detail .btn,
+.dark-mode .checkout .btn:hover {
+  background-color: #0056b3;
+}
+
+.dark-mode .checkout input {
+  background-color: #333; 
+  color: white;
+  border: 1px solid #444;
+}
+
+.dark-mode .checkout label {
+  color: #bbb; 
+}
+
+.dark-mode .gift-card-detail .gift-card-image {
+  filter: brightness(80%);
+}
+
+.gift-card-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.filter-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-options input,
+.filter-options select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.gift-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
-  margin: 20px;
 }
 
 .gift-card-item {
-  flex: 1 1 calc(25% - 20px); /* 4 cards per row on PC */
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
+  border: 1px solid #ddd;
+  padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-@media (max-width: 1024px) {
-  .gift-card-item {
-    flex: 1 1 calc(50% - 20px); /* 2 cards per row on tablets */
-  }
-}
-
-@media (max-width: 768px) {
-  .gift-card-item {
-    flex: 1 1 calc(50% - 20px); /* 2 cards per row on mobile */
-  }
+.gift-card-item:hover {
+  transform: scale(1.05);
 }
 
 .gift-card-item img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 100%;
-  height: 150px;
-  object-fit: contain;
+  width: 100px;
+  height: auto;
 }
 
-.gift-card-item h3 {
-  margin-top: 10px;
-  font-size: 18px;
+.description {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 10px;
 }
 
-.gift-card-item a {
-  color: #007bff;
-  font-size: 16px;
+.details-btn,
+.wishlist-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
 }
 
-/* Gift card detail styles */
+.details-btn {
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.wishlist-btn {
+  background: transparent;
+  color: black;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.wishlist-btn.active {
+  color: red;
+}
+
 .gift-card-detail {
   max-width: 600px;
-  margin: 50px auto;
-  background-color: white;
+  margin: 40px auto;
   padding: 20px;
+  text-align: center;
+  background: white;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Styled Dropdown with Down Arrow */
-.select-container {
-  position: relative;
+.gift-card-image {
   width: 100%;
-  margin-top: 10px;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
-.gift-card-detail select {
-  padding: 10px;
-  font-size: 16px;
-  width: 100%;
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.discount-tag {
+  background: red;
+  color: white;
+  padding: 5px 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: white;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-align: center;
+  font-size: 0.9rem;
 }
 
-/* Custom Dropdown Arrow */
-.select-container::after {
-  content: "▼";
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  font-size: 14px;
-  color: #333;
-  pointer-events: none;
+.description {
+  font-size: 1rem;
+  color: #555;
+  margin: 10px 0;
 }
 
-.gift-card-detail select:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-/* Email Input Field */
-.email-field {
+.select-container {
   margin-top: 15px;
-  text-align: left;
-  width: 100%;
 }
 
-.email-field label {
+.select-container select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.email-field {
+  margin-right: 25px;
+}
+
+.email-label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
 .email-field input {
-  width: calc(100% - 20px);
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 16px;
-  display: block;
-  margin: auto;
+  font-size: 1rem;
+  margin-left: 10px;
 }
 
-.email-field input:focus {
-  outline: none;
-  border-color: #007bff;
+.error {
+  color: red;
+  font-size: 0.9rem;
 }
 
-/* Checkout Button */
-.gift-card-detail .btn {
-  display: block;
-  background-color: #28a745;
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: blue;
   color: white;
-  padding: 12px;
+  text-decoration: none;
   border-radius: 5px;
-  margin: 20px auto 0;
-  font-size: 16px;
-  text-align: center;
-  width: calc(100% - 40px);
+  font-size: 1rem;
+  transition: 0.3s;
 }
 
-.gift-card-detail .btn:hover {
-  background-color: #218838;
+.btn:hover {
+  background: darkblue;
 }
 
-/* Checkout Page Styles */
 .checkout {
   max-width: 500px;
   margin: 50px auto;
@@ -204,4 +344,242 @@ h1 {
 
 .checkout .btn:hover {
   background-color: #0056b3;
+}
+
+/* Mobile & Tablet Styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .icon-container {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .search-bar input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+  }
+
+  .dark-mode-toggle {
+    position: relative;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 15px;
+  }
+
+  .gift-card-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .gift-card-item img {
+    width: 80px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .details-btn,
+  .wishlist-btn {
+    font-size: 12px;
+  }
+
+  .gift-card-detail {
+    padding: 15px;
+  }
+}
+
+.cart-btn {
+  background-color: #f5f5f5;
+  color: white;
+  border: none;
+  padding: 6px;
+  font-size: 14px;
+  margin-top: 10px;
+  background-color: rgb(20, 159, 115);
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-btn:hover {
+  background-color: #ffa500;
+  transform: scale(1.05);
+}
+
+.cart-btn.added {
+  background-color: #28a745;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.cart-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.cart-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.view-cart-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.view-cart-btn:hover {
+  background-color: #0056b3;
+}
+/* Cart & Wishlist Page Styles */
+.cart-container,
+.wishlist-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.cart-container h2,
+.wishlist-container h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Cart & Wishlist Gift Card List */
+.gift-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gift-card-item {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gift-card-item:hover {
+  transform: scale(1.05);
+}
+
+.gift-card-item img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 100px;
+  height: auto;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.details-btn,
+.wishlist-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.details-btn {
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.wishlist-btn {
+  background: transparent;
+  color: black;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.wishlist-btn.active {
+  color: red;
+}
+
+/* Empty State */
+.wishlist-container p,
+.cart-container p {
+  font-size: 1.2rem;
+  color: #777;
+  text-align: center;
+}
+
+.remove-btn {
+  background: red;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: #e03e3e;
+}
+
+/* Checkout Button */
+.checkout-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.checkout-btn:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+footer p {
+  margin: 0;
 }

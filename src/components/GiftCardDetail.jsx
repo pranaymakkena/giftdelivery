@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { giftCards } from './GiftCardList';
 
 const GiftCardDetail = () => {
   const { id } = useParams();
+  const giftCard = giftCards.find((card) => card.id === parseInt(id));
+
   const [denomination, setDenomination] = useState(100);
   const [email, setEmail] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(true);
+
+  if (!giftCard) {
+    return <h2 className="error-message">Gift Card Not Found!</h2>;
+  }
 
   const handleChangeDenomination = (event) => {
     setDenomination(event.target.value);
@@ -14,22 +21,25 @@ const GiftCardDetail = () => {
   const handleEmailChange = (e) => {
     const emailValue = e.target.value;
     setEmail(emailValue);
-
-    // Simple email validation
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     setIsEmailValid(emailRegex.test(emailValue));
   };
 
-  // Disable button if email is invalid or empty
   const isButtonDisabled = email === '' || !isEmailValid;
 
   return (
     <div className="gift-card-detail">
-      <h2>Gift Card Details</h2>
+      <img src={giftCard.imgSrc} alt={giftCard.name} className="gift-card-image" />
 
-      {/* Denomination Dropdown with Arrow */}
-      <p>Select a denomination:</p>
+      <div className="title-container">
+        <h2>{giftCard.name} Gift Card</h2>
+        {giftCard.discount > 0 && <span className="discount-tag">{giftCard.discount}% OFF</span>}
+      </div>
+
+      <p className="description">{giftCard.description}</p>
+
       <div className="select-container">
+        <label>Select a denomination:</label>
         <select value={denomination} onChange={handleChangeDenomination}>
           <option value={100}>₹100</option>
           <option value={500}>₹500</option>
@@ -38,14 +48,10 @@ const GiftCardDetail = () => {
         </select>
       </div>
 
-      {/* Price Display */}
-      <div>
-        <h3>Price: ₹{denomination}</h3>
-      </div>
+      <h3>Price: ₹{denomination}</h3>
 
-      {/* Email Input Field */}
       <div className="email-field">
-        <label htmlFor="email">Enter Your Email:</label>
+        <label htmlFor="email" className="email-label">Enter Your Email:</label>
         <input 
           type="email" 
           id="email" 
@@ -54,10 +60,9 @@ const GiftCardDetail = () => {
           placeholder="example@email.com" 
           required 
         />
-        {!isEmailValid && email && <p className="error">Please enter a valid email address.</p>}
+        {!isEmailValid && email && <p className="error">Invalid email address.</p>}
       </div>
 
-      {/* Checkout Button */}
       <Link 
         to="/checkout" 
         className="btn" 
